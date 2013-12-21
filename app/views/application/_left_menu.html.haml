@@ -29,22 +29,31 @@
       %li
         - if params[:action] != "addleaves"
           - if can? :assign_leave, @assign_leaves 
-            = link_to "Assign Leaves", addleaves_path
+            - if current_organization.leave_types.empty?
+            - else
+              = link_to "Assign Leaves", addleaves_path
         - if params[:controller] == "devise/invitations" && params[:action] == "new"
           %li.active Invite
         - else
           - if can? :new_user_invitation, @user
-            = link_to "Invite", new_user_invitation_path
+            - if current_organization.leave_types.empty?
+              
+            - else
+              = link_to "Invite", new_user_invitation_path
         - if params[:controller] == "users" && params[:action] == "upload_csv"
           %li.active Upload CSV and invite
         - else
           - if can? :upload_csv, @organization
-            %li
-              = link_to "Upload CSV and invite", upload_csv_path(current_organization.id)
+            - if current_organization.leave_types.empty?
+            - else
+              %li
+                = link_to "Upload CSV and invite", upload_csv_path(current_organization.id)
         - if params[:action] == "leave_summary_for_roles"
           %li.active Leave summary on roles
         - else
           - if can? :leave_summary_on_roles, User
-            %li
-              = link_to 'Leave summary on roles', leave_summary_for_roles_path
+            - if current_organization.leave_types.empty?
+            - else
+              %li
+                = link_to 'Leave summary on roles', leave_summary_for_roles_path
 	    
