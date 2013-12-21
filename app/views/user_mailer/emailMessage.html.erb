@@ -4,11 +4,20 @@
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />   
   </head>   
   <body>
-    <p><b>Hello <%= @user.organization.name %>,</b></p>
-      <p><%= @leave.reason %><br /><%= @leave.starts_at.strftime("%A, %B %d, %Y") %> to <%= @leave.ends_at.strftime("%A, %B %d, %Y") %></p>
-      <%= link_to 'click hear', leaves_path(only_path: false,       host: [@user.organization.slug, '.',JoshIntranet::Application.config.action_mailer.default_url_options[:host]].join) %> to take action.
+<i>
+Hello,
+</i>
+<br/>
+<p>
+The <%= @user.roles %> <%= @user.email %> is applyed for leave for following reason:
+</br>
+      <p><%= @leave.reason %>
+      <br />
+from date:<br/>       <%= @leave.starts_at.strftime("%A, %B %d, %Y") %><br/> to  <br/> <%= @leave.ends_at.strftime("%A, %B %d, %Y") %></p>
+<p>You can Approve it by clicking on this link:   <%= link_to 'click hear', leaves_path(only_path: false,       host: [@user.organization.slug, '.',JoshIntranet::Application.config.action_mailer.default_url_options[:host]].join) %> to take action.
     <br />
-    <p>Thanks & regards!<br /></p>   
+    <p>Thanks & regards!<br />
+  <%= @user.organization.name %> team </p>   
   </body> 
 </html> 
 

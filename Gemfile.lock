@@ -29,7 +29,6 @@ GEM
       i18n (= 0.6.1)
       multi_json (~> 1.0)
     arel (3.0.3)
-    atomic (1.1.14)
     bcrypt-ruby (3.0.1)
     bootstrap-sass-rails (3.0.3.0)
       railties (>= 3.1.0)
@@ -52,15 +51,15 @@ GEM
       execjs
     coffee-script-source (1.6.3)
     country_select (1.2.0)
-    devise (3.2.2)
+    devise (2.1.2)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
-      railties (>= 3.2.6, < 5)
-      thread_safe (~> 0.1)
-      warden (~> 1.2.3)
-    devise_invitable (1.3.1)
-      actionmailer (>= 3.2.6, < 5)
-      devise (>= 3.1.0)
+      railties (~> 3.1)
+      warden (~> 1.2.1)
+    devise_invitable (1.1.2)
+      actionmailer (~> 3.0)
+      devise (>= 2.1.0)
+      railties (~> 3.0)
     diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.0.2)
@@ -166,8 +165,6 @@ GEM
       libv8 (~> 3.16.14.0)
       ref
     thor (0.18.1)
-    thread_safe (0.1.3)
-      atomic
     tilt (1.4.1)
     treetop (1.4.15)
       polyglot
@@ -189,6 +186,7 @@ GEM
 
 PLATFORMS
   ruby
+  x86-mingw32
 
 DEPENDENCIES
   bcrypt-ruby (= 3.0.1)
@@ -197,8 +195,8 @@ DEPENDENCIES
   cancan
   coffee-rails (~> 3.2.1)
   country_select
-  devise
-  devise_invitable
+  devise (= 2.1.2)
+  devise_invitable (= 1.1.2)
   execjs
   haml (>= 3.0.0)
   haml-rails
