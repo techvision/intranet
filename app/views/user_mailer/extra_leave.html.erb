@@ -16,6 +16,10 @@ leaves you are applying on dated from <%= @leave.starts_at.strftime("%B %d ") %>
 <br/>
 <br/>
 Don't hesitate to get back to us if you have any query.
+<br/>
+Regards,
+<br/>
+<%= @leave.user.organization.name %> team
 </p>
 </body>
 </html>
