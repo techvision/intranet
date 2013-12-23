@@ -16,18 +16,18 @@ Hello
 </br>
 <% if @user.profile.nil? %>
 <p>
-Your leave has now been canceled by your <%= @user.roles %> <%= @user.email %>
+Your leave has  been canceled by your <%= @user.roles %> <%= @user.email %>
 </p>
 <% else %>
 
 <p>
-Your leave has now been canceled by your <%= @user.roles %> <%= @user.profile.name %>
+Your leave has been canceled by your <%= @user.roles %> <%= @user.profile.name %>
 <% end %>
 
 </p>
 </br>
 Regards,
 </br>
-<%= @user.organization.name %>
+<%= @user.organization.name %> team
 </body>
 </html>

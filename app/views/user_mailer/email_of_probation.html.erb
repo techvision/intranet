@@ -13,7 +13,7 @@ Hello Admin,
 The person <%= @user.email %>
 will going to complete his probation time after 15days from today.
 <br/>
-On date: <%= @date %>
+On date: <%= @date.strftime("%A, %B %d, %Y") %>
 <br/>
 <br/>
 Regards,<br/>
