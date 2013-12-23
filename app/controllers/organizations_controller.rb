@@ -41,16 +41,15 @@ class OrganizationsController < ApplicationController
   # POST /organizations.json
   def create
     @organization = Organization.new(params[:organization])
-p @organization.errors
-p "params is,"
-p params
 
     respond_to do |format|
       if @organization.save
-        format.html { redirect_to root_url, notice: 'Please confirm your account before continue.' }
+        p "-------------------------"
+        p @organization.users.find_by(:roles => "Admin")
+        UserMailer.organizationRegistration(@organization).deliver
+        format.html { redirect_to root_url, notice: 'Your account successfully created.' }
         format.json { render json: @organization, status: :created, location: @organization }
       else
-p @organization.errors
         format.html { render action: "new", layout: 'home' }
         format.json { render json: @organization.errors, status: :unprocessable_entity }
       end

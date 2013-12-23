@@ -19,7 +19,7 @@ class User
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
   devise :invitable, :database_authenticatable, :registerable,
-    :recoverable, :rememberable, :trackable, :validatable, :confirmable
+    :recoverable, :rememberable, :trackable, :validatable
 
 
   ## Database authenticatable
@@ -81,6 +81,14 @@ class User
 
   # use the name field directly user field for example @user.name
   delegate :name, :to => :profile
+
+  def send_confirmation_instructions
+    super
+    self.confirmation_token = nil    # clear's the confirmation_token
+    self.confirmed_at = Time.now.utc # confirm's the user
+    self.save
+  end
+
   def self.date_of_birth
     date = Date.today+3
   o  = Organization.all

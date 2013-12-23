@@ -36,8 +36,6 @@ class LeavesController < ApplicationController
     @leave.user = current_user
     @leave.organization = current_organization
     available_leaves = available_leaves(@leave.user)
-p "the variable is,"
-p available_leaves 
     @leave.access_params(params[:leave], available_leaves)
     @leave.status = "Pending"
     respond_to do |format|

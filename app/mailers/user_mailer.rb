@@ -1,8 +1,13 @@
 class UserMailer < ActionMailer::Base
 
+  def organizationRegistration(organization)
+    @user = organization.users.find_by(:roles => "Admin")
+    mail(:from => "niwant.techvision@gmail.com", :to => @user.email, :subject => "Thank you for registering with joshintranet.com", :template_path => "user_mailer", :template_name => "organization_registration")
+  end  
+
   def leaveReport(leave, user, user_role)
     @user = user
-         @leave = leave
+    @leave = leave
     @user_role = user_role
     mail(:from => "niwant.techvision@gmail.com", :to => @user_role, :subject => "Apply leave", :template_path => "user_mailer", :template_name => "emailMessage")
   end
