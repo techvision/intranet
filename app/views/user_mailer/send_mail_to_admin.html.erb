@@ -25,6 +25,7 @@ his assign leaves
 <% @user.each do |user| -%>
 <tr>
 <td>
+u = user
 <%= user.email %>
 </td>
 <% user.leave_details.each do |leave| -%>
@@ -50,8 +51,7 @@ his assign leaves
 </table>
 <br/>
 <p>
-Regards,
 <br/>
-<%= user.organization.name %>
+Thank you!
 </body>
 </html>

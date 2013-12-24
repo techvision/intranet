@@ -24,8 +24,9 @@ Your <%= @user.roles %> <%= @user.email %>  has approved your leave that you had
 Your <%= @user.roles %> <%= @user.name %>  has approved your leave that you had applied from <%= @leave.starts_at %> to</br> <%= @leave.ends_at %>
 <% end %>
 </br>
+<br/>
 Regards,
 </br>
-<%= @user.organization.name %>
+<%= @user.organization.name %> team
 </body>
 </html>
