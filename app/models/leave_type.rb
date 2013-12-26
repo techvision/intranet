@@ -2,18 +2,6 @@ class LeaveType
   include Mongoid::Document
   belongs_to :organization
   field :name, type: String
-  #LEAVE_TYPE_NAME = ['Vacation Leave', 'Sick Leave', 'Administrative Leave', 'Convention Leave', 'Leave For Athletic Competition', 'Leave For Government Office', 'Leave for Emergency Civilian Duty', 'Leave To Appear As a Witness', 'State Family Leave', 'Federal Family and Medical Leave', 'Donated Leave Program', 'Leave Without Pay']
-
-#attr_accessible :leave_type_name
-
-
-
-
-
-
-
-
-
   field :max_no_of_leaves, type: Float
   field :auto_increament, type: Boolean
   field :number_of_leaves, type: Float 

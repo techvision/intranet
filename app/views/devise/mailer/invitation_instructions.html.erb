@@ -1,7 +1,7 @@
 <p>Hello <%= @resource.email %>!</p>
 
 <p><%= @resource.organization.name %> invited you to: </br> 
-<%= link_to root_url( host: [@resource.organization.slug, '.',JoshIntranet::Application.config.action_mailer.default_url_options[:host]].join), root_url( host: [@resource.organization.slug, '.',JoshIntranet::Application.config.action_mailer.default_url_options[:host]].join) %></br> This web portal will manage your all leaves automatycly.
+<%= link_to root_url( host: [@resource.organization.slug, '.',JoshIntranet::Application.config.action_mailer.default_url_options[:host]].join), root_url( host: [@resource.organization.slug, '.',JoshIntranet::Application.config.action_mailer.default_url_options[:host]].join) %></br> This web portal will manage your all leaves automatically.
 <br/>
 Only  you need to   accept an invitation from belows link.
 If you want to accept an invitation, you can accept it through the link below.</p>

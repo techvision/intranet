@@ -91,43 +91,45 @@ class User
 
   def self.date_of_birth
     date = Date.today+3
-  o  = Organization.all
-  o.each do |organization|
-    admin = organization.users.where(:roles => 'Admin').collect(&:email)
-    users = organization.users.in(:roles => ['HR', 'Manager', 'Employee'])
-    users.each do |user|
-      if user.profile != nil
-      if user.profile.dateOfBirth.try(:strftime, "%j").to_i == Date.today.strftime("%j").to_i+3
-      UserMailer.date_of_birth(user, admin, date).deliver
+    o  = Organization.all
+    o.each do |organization|
+      admin = organization.users.where(:roles => 'Admin').collect(&:email)
+      users = organization.users.in(:roles => ['HR', 'Manager', 'Employee'])
+      users.each do |user|
+        if user.profile != nil
+          if user.profile.dateOfBirth.try(:strftime, "%j").to_i == Date.today.strftime("%j").to_i+3
+            UserMailer.date_of_birth(user, admin, date).deliver
+          end
+        end
       end
     end
   end
-  end
-  end
+
   def self.leave_details_every_month
     organization = Organization.all
-      organization.each do |o|
-    user_admin = User.where(:roles => 'Admin').collect(&:email)
-  users  = o.users.in(:roles => ['HR', 'Manager', 'Employee'])
+    organization.each do |o|
+      user_admin = User.where(:roles => 'Admin').collect(&:email)
+      users  = o.users.in(:roles => ['HR', 'Manager', 'Employee'])
 #        another_user = User.in(:roles => ['HR', 'Manager', 'Employee']).collect(&:email)
-    users.each do |user|
+      users.each do |user|
         user.leave_details.each do |leave|
-        if leave.assign_date.year == Time.zone.now.year
-    UserMailer.send_leave(user_admin, user.email, leave).deliver
-end
-end
-end
+          if leave.assign_date.year == Time.zone.now.year
+            UserMailer.send_leave(user_admin, user.email, leave).deliver
+          end
+        end
       end
-      end
-def self.send_mail_to_admin
+    end
+  end
+
+  def self.send_mail_to_admin
     organization = Organization.all
     organization.each do |o|
-
-    admin = o.users.where(:roles => 'Admin').collect(&:email)
-    user = o.users.in(:roles => ['HR', 'Manager', 'Employee'])
-            UserMailer.send_mail_to_admin(admin, user).deliver
-	    end
+      admin = o.users.where(:roles => 'Admin').collect(&:email)
+      user = o.users.in(:roles => ['HR', 'Manager', 'Employee'])
+      UserMailer.send_mail_to_admin(admin, user).deliver
+    end
   end
+
   def self.email_of_probation
     date = Date.today+15
     organization = Organization.all
@@ -136,7 +138,7 @@ def self.send_mail_to_admin
       users = o.users.in(:roles => ['HR', 'Manager', 'Employee'])
       users.each do |user|
         if user.probation_end_date.try(:strftime, "%j").to_i == Date.today.strftime("%j").to_i+15
-        UserMailer.email_of_probation(admin, user, date).deliver
+          UserMailer.email_of_probation(admin, user, date).deliver
         end
       end
     end

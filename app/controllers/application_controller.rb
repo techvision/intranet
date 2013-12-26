@@ -20,23 +20,13 @@ redirect_to root_url, :alert => exception.message
 
   def after_invite_path_for(resource)
     user = resource
-p "params"
-p params
-l_t = params[:leave_type]
-p "the new var will be:"
-pay = params[:pay_role]
-p "pay role will be"
-p params[:user][:pay_role]
-  if params[:user][:pay_role] == "1"
-    @leave_types = current_organization.leave_types.where(:id => l_t)
-p "first will show var in if"
-p @leave_types
-  else
-    @leave_types = current_organization.leave_types.all
-p "else part is,"
-p @leave_types
-      end
-
+    l_t = params[:leave_type]
+    pay = params[:pay_role]
+    if params[:user][:pay_role] == "1"
+      @leave_types = current_organization.leave_types.where(:id => l_t)
+    else
+      @leave_types = current_organization.leave_types.all
+    end
     assign_leaves =calculate_leaves
     user.leave_details.build if user.leave_details[0].nil?
     user.leave_details[0].assign_date = Date.today
@@ -55,7 +45,7 @@ p @leave_types
       if lt.auto_increament == true
         num_leaves = lt.number_of_leaves
       else
-      num_leaves = (lt.max_no_of_leaves/12.0*months).round(0)
+        num_leaves = (lt.max_no_of_leaves/12.0*months).round(0)
       end
       assign_leaves[lt.id] = num_leaves
     end
