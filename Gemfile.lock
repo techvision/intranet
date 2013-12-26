@@ -186,7 +186,6 @@ GEM
 
 PLATFORMS
   ruby
-  x86-mingw32
 
 DEPENDENCIES
   bcrypt-ruby (= 3.0.1)
