@@ -44,8 +44,6 @@ class OrganizationsController < ApplicationController
 
     respond_to do |format|
       if @organization.save
-        p "-------------------------"
-        p @organization.users.find_by(:roles => "Admin")
         UserMailer.organizationRegistration(@organization).deliver
         format.html { redirect_to root_url, notice: 'Your account successfully created.' }
         format.json { render json: @organization, status: :created, location: @organization }
