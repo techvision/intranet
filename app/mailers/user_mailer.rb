@@ -2,6 +2,7 @@ class UserMailer < ActionMailer::Base
 
   def organizationRegistration(organization)
     @user = organization.users.find_by(:roles => "Admin")
+    p @user
     mail(:from => "niwant.techvision@gmail.com", :to => @user.email, :subject => "Thank you for registering with joshintranet.com", :template_path => "user_mailer", :template_name => "organization_registration")
   end  
 
