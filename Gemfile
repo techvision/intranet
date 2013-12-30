@@ -67,5 +67,5 @@ gem 'smarter_csv'
 gem 'whenever', :require => false
 gem 'kaminari'
 gem 'nested_form'
-
-
+gem 'rails_12factor'
+ruby '2.0.0'
