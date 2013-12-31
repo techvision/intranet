@@ -14,7 +14,7 @@ The <%= @user.roles %> <%= @user.email %> is applyed for leave for following rea
       <p><%= @leave.reason %>
       <br />
 from date:<br/>       <%= @leave.starts_at.strftime("%A, %B %d, %Y") %><br/> to  <br/> <%= @leave.ends_at.strftime("%A, %B %d, %Y") %></p>
-<p>You can Approve it by clicking on this link:   <%= link_to 'click hear', leaves_path(only_path: false,       host: [@user.organization.slug, '.',JoshIntranet::Application.config.action_mailer.default_url_options[:host]].join) %> to take action.
+<p>You can Approve it by clicking on this link:   <%= link_to 'click hear', leaves_path(only_path: false,       host: [@user.organization.slug, '.',"niwantintranet.com"].join) %> to take action.
     <br />
     <p>Thanks & regards!<br />
   <%= @user.organization.name %> team </p>   
