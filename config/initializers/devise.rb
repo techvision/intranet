@@ -7,14 +7,14 @@ Devise.setup do |config|
   config.mailer_sender = "NoReply"
 
   # Configure the class responsible to send e-mails.
-   config.mailer = ActionMailer::Base.smtp_settings = {
-  :address        => 'smtp.sendgrid.net',
-  :port           => '587',
-  :authentication => :plain,
-  :user_name      => ENV['SENDGRID_USERNAME'],
-  :password       => ENV['SENDGRID_PASSWORD'],
-  :domain         => 'heroku.com',
-  :enable_starttls_auto => tru}
+#   config.mailer = ActionMailer::Base.smtp_settings = {
+#  :address        => 'smtp.sendgrid.net',
+#  :port           => '587',
+#  :authentication => :plain,
+#  :user_name      => ENV['SENDGRID_USERNAME'],
+#  :password       => ENV['SENDGRID_PASSWORD'],
+#  :domain         => 'heroku.com',
+#  :enable_starttls_auto => tru}
 
   # ==> ORM configuration
   # Load and configure the ORM. Supports :active_record (default) and
