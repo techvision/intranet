@@ -1,3 +1,5 @@
+- content_for :javascript do
+  = javascript_include_tag 'leaves'
 - if current_user.roles != "Admin"
   %h1 Leaves summary for an year #{Date.today.year}
 

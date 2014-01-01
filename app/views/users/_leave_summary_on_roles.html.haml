@@ -1,3 +1,5 @@
+- content_for :javascript do
+  = javascript_include_tag 'leave_summary_on_roles', 'user'
 %tr
   %th Assigned date
   - @leave_types.each do |lt|

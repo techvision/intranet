@@ -1,3 +1,5 @@
+- content_for :javascript do
+  = javascript_include_tag 'assignLeaves', 'user'
 = simple_form_for  @user, url: chengeroles_path(@user), method: :post,  html: {:class => 'form-horizontal'} do |f|
   = f.error_notification
   .form-inputs

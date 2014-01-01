@@ -1,3 +1,5 @@
+- content_for :javascript do
+  = javascript_include_tag 'leaves'
 = simple_form_for @leave, :url => approve_leave_path(@leave), :method => :put, html: {:class => 'form-horizontal'}, :remote =>true do |f| 
   = f.error_notification
   = f.input :leave_type_id, :as => :hidden, :input_html => {:value => "#{@leave.leave_type_id}" }

@@ -1,3 +1,5 @@
+- content_for :javascript do
+  = javascript_include_tag 'leave_types'
 = simple_form_for @leave_type do |f|
   = f.error_notification
   .form-inputs

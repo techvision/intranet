@@ -1,3 +1,5 @@
+- content_for :javascript do
+  = javascript_include_tag 'leaves'
 = simple_form_for @leave, :url => rejectStatus_leave_path(@leave), html: {:class => 'form-horizontal'}, :remote =>true do |f|
   = f.error_notification
   = f.input :reject_reason, :as => :text, :required => true, :input_html => {:cols => 20, :rows => 5}

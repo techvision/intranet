@@ -1,3 +1,5 @@
+- content_for :javascript do
+  = javascript_include_tag 'user'
 = simple_form_for @user, url: profile_path(@user), method: :post, html: {:class => 'form-horizontal'} do |u|
   = u.error_notification
 
@@ -16,7 +18,7 @@
       =p.input :twitter_handle
       =p.input :linkedin_name, :label => 'Linkedin Name'
     .form-actions
-    = u.submit"createProfile", class: 'btn btn-large btn-success'
+    = u.submit"Create Profile", class: 'btn btn-large btn-success'
     - if current_user.profile.nil?
       = link_to 'Skip', leaves_path, class: 'btn btn-large btn-success'
     - else
