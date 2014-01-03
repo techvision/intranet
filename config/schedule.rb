@@ -18,7 +18,7 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
-set :environment, :development
+set :environment, :production
 
 every :month, :at => 'start of the month at 00:01am' do
   runner "Leave.increment_leaves"
