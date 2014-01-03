@@ -1,22 +1,22 @@
 - content_for :javascript do
   = javascript_include_tag 'leaves'
 = simple_form_for @leave, html: {:class => 'form-horizontal'} do |f|
- = f.error_notification
- = f.association :leave_type, :collection => current_organization.leave_types.all.entries, :prompt => "Select leave type"
- = f.input :reason
- =f.input :starts_at, :label => 'Select start date', :input_html => {:class => "datepicker"}, :readonly => true
- = f.input :ends_at, :label => 'Select end date', :input_html => {:class => "datepicker"}, :readonly => true
- = f.input :number_of_days
- - if current_user.profile.nil?
-  = f.input :contact_address, :required => true
- - else
-  = f.input :contact_address, :as => :text, :input_html => {:value => "#{current_user.profile.local_address}", :cols => 20, :rows => 5}
- - if current_user.profile.nil?
-  = f.input :contact_number, :required => true
- - else
-  = f.input :contact_number, :input_html => {:value => "#{current_user.profile.phone_number}"}
- = f.submit "Apply", class: 'btn btn-large btn-success'
- = link_to 'Cancel', leaves_path, class: 'btn btn-large btn-success'
+  = f.error_notification
+  = f.association :leave_type, :collection => current_organization.leave_types.all.entries, :prompt => "Select leave type"
+  = f.input :reason
+  = f.input :starts_at, :label => 'Select start date', :input_html => {:class => "datepicker"}, :readonly => true
+  = f.input :ends_at, :label => 'Select end date', :input_html => {:class => "datepicker"}, :readonly => true
+  = f.input :number_of_days
+  - if current_user.profile.nil?
+    = f.input :contact_address, :required => true
+  - else
+    = f.input :contact_address, :as => :text, :input_html => {:value => "#{current_user.profile.local_address}", :cols => 20, :rows => 5}
+  - if current_user.profile.nil?
+    = f.input :contact_number, :required => true
+  - else
+    = f.input :contact_number, :input_html => {:value => "#{current_user.profile.phone_number}"}
+  = f.submit "Apply", class: 'btn btn-large btn-success'
+  = link_to 'Cancel', leaves_path, class: 'btn btn-large btn-success'
 
 :javascript
   $('#datepicker').datepicker({})

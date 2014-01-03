@@ -107,4 +107,29 @@ date = date.to_s
     end
   end
 
+  def self.assign_leave
+    Organization.all.each do |org|
+      leave_types = org.leave_types.all
+      admin = org.users.where(roles: "Admin")
+      users = org.users.ne(roles: "Admin")
+      assign_leaves = {}
+      leave_types.each do |leave_type|
+        if leave_type.auto_increament == true
+          num_leaves = leave_type.number_of_leaves
+        else
+          num_leaves = leave_type.max_no_of_leaves
+        end
+        assign_leaves[leave_type.id] = num_leaves                   
+      end
+      users.each do |user|
+        user.leave_details.build
+        user.leave_details.assign_date = Date.today
+        user.leave_details.assign_leaves = assign_leaves
+        user.leave_details.available_leaves = assign_leaves 
+        user.leave_details.save
+        UserMailer.assignLeaveReport(user).deliver
+      end
+      UserMailer.assignLeaveReport(admin).deliver
+    end
+  end
 end

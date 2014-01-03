@@ -1,0 +1,25 @@
+<!DOCTYPE html> 
+<html>   
+  <head>     
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />   
+  </head>   
+  <body>
+<i>
+<% if @user.profile.nil? %>
+  Hello <%= @user.email %>
+<% else %>
+  Hello <%= @user.name %>
+<% end %>
+</i>
+<br/>
+<p>as a [<%= @user.roles %>] of [<%= @user.organization.name %>], all employees has been assigned leaves for the year[<%= Date.today.year %>].
+Please check the all employees assigned leaves details by clicking on link below.<br>
+<%= link_to "Click heare", leave_summary_for_roles_path(only_path: false, host: [@user.organization.slug, '.',"niwantintranet.com"].join)
+<br>
+<br>
+<b>Warm Regards<br>
+<%= @user.organization.name %> LMS team</b>
+  
+  </body> 
+</html> 
+
