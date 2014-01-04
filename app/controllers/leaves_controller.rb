@@ -85,48 +85,30 @@ class LeavesController < ApplicationController
   def approve
     @leave = Leave.find(params[:id])
     if request.put?
-      available_leaves = available_leaves(@leave.user)
-      @leave.access_params(params[:leave],available_leaves)
-      @leave.status = "Approved"
+      @leave.access_params(params[:leave], @leave.user.leave_details.last.available_leaves)
       respond_to do |format|
-        if @leave.update_attributes(params[:leave])
-          UserMailer.approveLeave(@leave, current_user).deliver    
-          num_day = @leave.number_of_days
-          leave_details = @leave.user.leave_details
-          leave_details.each do |l|
-            if l.assign_date.year == Time.zone.now.year
-              temp_var = l.available_leaves
-              unpaid = l.unpaid_leave
-              temp_var.each do |k, v|
-                hold_var = v.to_f
-              if hold_var <= 0
-              unpaid.each do |key, value|
-                  hold_value = value.to_f
-                  @addition_var = hold_value + num_day
-                end
-                  l.unpaid_leave = {@leave.id => @addition_var}
-p "var val is,"
-p l
-                  if l.save
-                  UserMailer.extra_leave(@leave).deliver
-end
-		                    else
-              tmp_num = l.available_leaves[@leave.leave_type.id.to_s].to_f
-              tmp_num = tmp_num - @leave.number_of_days 
-              l.available_leaves[@leave.leave_type.id.to_s] = tmp_num
-              l.save
-	      format.html { redirect_to leaves_path, notice: 'Leave is successfully approved.' }          
-	      format.js
-              end
-                end
-            end
+      if @leave.errors.any? == false
+        leave_details = @leave.user.leave_details.last
+        up_leaves = leave_details.available_leaves[@leave.leave_type.id.to_s] - @leave.number_of_days
+        if leave_details.available_leaves[@leave.leave_type.id.to_s].eql? 0 or up_leaves.< 0
+          if up_leaves.< 0
+            leave_details.available_leaves[@leave.leave_type.id.to_s] = 0
+          leave_details.unpaid_leaves[@leave.leave_type.id.to_s].to_f += up_leaves.abs.to_f
+          else
+            leave_details.unpaid_leaves[@leave.leave_type.id.to_s].to_f += @leave.number_of_days.to_f
           end
-	  
+          @leave.status = "Approved"
+          UserMailer.extra_leave(@leave).deliver if leave_details.save && @leave.save
+        else
+          leave_details.available_leaves[@leave.leave_type.id.to_s].to_f -= @leave.number_of_days.to_f
+          @leave.status = "Approved"
+          UserMailer.approveLeave(@leave, current_user).deliver if leave_details.save && @leave.save
+        end
         else
           format.html { render   "approve.js" }
           format.json { render json: @leave.errors, status: :unprocessable_entity }
-	  format.js
-	end
+          format.js
+        end
       end
     end
   end
