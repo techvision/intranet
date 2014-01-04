@@ -1,7 +1,7 @@
 - content_for :javascript do
   = javascript_include_tag 'assignLeaves'
 = simple_form_for @user, url: assignleaves_path(@user), method: :post, html: {:class => 'form-horizontal'} do |f|
-  - if @user.leave_details[0].new_record
+  - if @user.leave_details.last.new_record
     Date:
     = text_field_tag "date", "#{Date.today}", :readonly => true, :input_html => {:class => "datepicker"} 
     - @leave_types.each do |lt|
@@ -9,7 +9,7 @@
       = text_field_tag "assign_leaves[#{lt.id}]", "#{@assign_leaves[lt.id]}"	
   - else
     Date:
-    = text_field_tag "date", "#{@user.leave_details[0].assign_date}", :readonly => true, :input_html => {:class => "datepicker"}
+    = text_field_tag "date", "#{@user.leave_details.last.assign_date}", :readonly => true
     - @leave_types.each do |lt|
       #{lt.name}:
       = text_field_tag "assign_leaves[#{lt.id}]", "#{@assign_leaves[lt.id.to_s]}"	

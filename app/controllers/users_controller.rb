@@ -56,18 +56,18 @@ class UsersController  < ApplicationController
     @user = User.find(params[:user_id])
     @leave_types = current_organization.leave_types.all
     if request.get?
-      if @user.leave_details[0].nil?
+      if @user.leave_details.empty?
         @user.leave_details.build(:assign_date => Date.today)
         @assign_leaves = calculate_leaves
       else
-        @assign_leaves = @user.leave_details[0].assign_leaves
+        @assign_leaves = @user.leave_details.last.assign_leaves
       end
     elsif request.post?
-      @user.leave_details.build if @user.leave_details[0].nil?
-      @user.leave_details[0].assign_date = params[:date]
-      @user.leave_details[0].assign_leaves = params[:assign_leaves]
-      @user.leave_details[0].available_leaves = params[:assign_leaves]
-      @user.leave_details[0].save
+      @user.leave_details.build if @user.leave_details.empty?
+      @user.leave_details.last.assign_date = params[:date]
+      @user.leave_details.last.assign_leaves = params[:assign_leaves]
+      @user.leave_details.last.available_leaves = params[:assign_leaves]
+      @user.leave_details.last.save
         redirect_to addleaves_path
     end    
  end

@@ -28,11 +28,11 @@ redirect_to root_url, :alert => exception.message
       @leave_types = current_organization.leave_types.all
     end
     assign_leaves =calculate_leaves
-    user.leave_details.build if user.leave_details[0].nil?
-    user.leave_details[0].assign_date = Date.today
-    user.leave_details[0].assign_leaves = assign_leaves
-    user.leave_details[0].available_leaves = assign_leaves
-    user.leave_details[0].save
+    user.leave_details.build
+    user.leave_details.last.assign_date = Date.today
+    user.leave_details.last.assign_leaves = assign_leaves
+    user.leave_details.last.available_leaves = assign_leaves
+    user.leave_details.last.save
     users_path
   end
 
