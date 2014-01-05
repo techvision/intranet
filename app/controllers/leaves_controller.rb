@@ -100,7 +100,7 @@ class LeavesController < ApplicationController
           @leave.status = "Approved"
           UserMailer.extra_leave(@leave).deliver if leave_details.save && @leave.save
         else
-          leave_details.available_leaves[@leave.leave_type.id.to_s].to_f -= @leave.number_of_days.to_f
+          leave_details.available_leaves[@leave.leave_type.id.to_s] -= @leave.number_of_days.to_f
           @leave.status = "Approved"
           UserMailer.approveLeave(@leave, current_user).deliver if leave_details.save && @leave.save
         end
