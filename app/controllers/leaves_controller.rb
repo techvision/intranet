@@ -89,7 +89,7 @@ class LeavesController < ApplicationController
       respond_to do |format|
       if @leave.errors.any? == false
         leave_details = @leave.user.leave_details.last
-        up_leaves = leave_details.available_leaves[@leave.leave_type.id.to_s] - @leave.number_of_days
+        up_leaves = leave_details.available_leaves[@leave.leave_type.id.to_s].to_f - @leave.number_of_days
         if leave_details.available_leaves[@leave.leave_type.id.to_s].eql? 0 or up_leaves.< 0
           if up_leaves.< 0
             leave_details.available_leaves[@leave.leave_type.id.to_s] = 0
@@ -104,6 +104,8 @@ class LeavesController < ApplicationController
           @leave.status = "Approved"
           UserMailer.approveLeave(@leave, current_user).deliver if leave_details.save && @leave.save
         end
+        format.html { redirect_to leaves_path, notice: 'Leave is successfully approved.' }          
+        format.js
         else
           format.html { render   "approve.js" }
           format.json { render json: @leave.errors, status: :unprocessable_entity }
