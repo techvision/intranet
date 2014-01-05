@@ -191,9 +191,8 @@ end
         if l.assign_date.year == Date.today.year
           available_leaves = l.available_leaves
         end
-          end
+      end
     end
     return available_leaves
-    end
-
+  end
 end

@@ -16,7 +16,9 @@
 // require jquery-ui
 //= require jquery.ui.datepicker
 //= require jquery.ui.core
-//
+//= require Acc.DC.API
+//= require calendar_generator 
+//= require calendar_generator.min
 
 
 $(document).ready(function() {
