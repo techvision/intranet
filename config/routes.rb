@@ -36,7 +36,7 @@ devise_for :users, :path_names => {
     match '/managers' => 'users#managers', :via => :get, as: :managers
     match '/leave_summary_for_roles' => 'users#leave_summary_for_roles', :via => :get 
     match '/users/:user_id/leave_summary_on_roles' => 'users#leave_summary_on_roles', :via => [:get, :post], as: :leave_summary_on_roles
-
+    match 'calenderHelp' => 'home#calender_help', :via => :get
   end
 
   # The priority is based upon order of creation:
