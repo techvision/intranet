@@ -4,5 +4,4 @@ class LeaveDetail
   field :assign_date, type: Date
   field :assign_leaves, type: Hash
   field :available_leaves, type: Hash
-  field :unpaid_leave, type: Hash
 end

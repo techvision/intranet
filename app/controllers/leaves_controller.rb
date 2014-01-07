@@ -87,29 +87,16 @@ class LeavesController < ApplicationController
     if request.put?
       @leave.access_params(params[:leave], @leave.user.leave_details.last.available_leaves)
       respond_to do |format|
-      if @leave.errors.any? == false
-        leave_details = @leave.user.leave_details.last
-        diduct_leaves = leave_details.available_leaves[@leave.leave_type.id.to_s].to_f - params[:leave]["number_of_days"].to_f
-        if diduct_leaves.< 0
-          if leave_details.unpaid_leave[@leave.leave_type.id.to_s].nil?
-            leave_details.available_leaves[@leave.leave_type.id.to_s] = 0
-          leave_details.unpaid_leave = {@leave.leave_type.id => diduct_leaves.abs.to_f}
-          else
-            leave_details.unpaid_leave[@leave.leave_type.id.to_s] += diduct_leaves.abs.to_f
-          end
-          @leave.status = "Approved"
-          @leave.starts_at = params[:leave]["starts_at"]
-          @leave.ends_at = params[:leave]["ends_at"]
-          UserMailer.extra_leave(@leave).deliver if leave_details.save && @leave.save
-        else
+        if @leave.errors.any? == false
+          leave_details = @leave.user.leave_details.last
+          diduct_leaves = leave_details.available_leaves[@leave.leave_type.id.to_s].to_f - params[:leave]["number_of_days"].to_f
           leave_details.available_leaves[@leave.leave_type.id.to_s] = diduct_leaves.to_f
           @leave.status = "Approved"
           @leave.starts_at = params[:leave]["starts_at"]
           @leave.ends_at = params[:leave]["ends_at"]
           UserMailer.approveLeave(@leave, current_user).deliver if leave_details.save && @leave.save
-        end
-        format.html { redirect_to leaves_path, notice: 'Leave is successfully approved.' }          
-        format.js
+          Format.html { redirect_to leaves_path, notice: 'Leave is successfully approved.' }          
+          format.js
         else
           format.html { render   "approve.js" }
           format.json { render json: @leave.errors, status: :unprocessable_entity }
