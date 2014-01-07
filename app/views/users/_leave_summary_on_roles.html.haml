@@ -4,10 +4,15 @@
   %th Assigned date
   - @leave_types.each do |lt|
     %th= lt.name + " [Assign/Availabel]"
+  %th Leave without Pay
        
 %tr
   - @leave_details.each do |l|
+    - unpaidLeave = 0
     - date = l.assign_date
     %td= date.present? ? date : ''
     - @leave_types.each do |lt|              
       %td="#{l.assign_leaves[lt.id.to_s]} / #{l.available_leaves[lt.id.to_s]}"
+      - if l.unpaid_leave != nil
+        - unpaidLeave += "#{l.unpaid_leave[lt.id.to_s]}".to_f
+    %td= unpaidLeave
