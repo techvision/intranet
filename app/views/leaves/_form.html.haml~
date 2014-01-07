@@ -8,7 +8,10 @@
     = f.input_field :starts_at, :readonly => true
     %a{:href => '#', :id => 'imgCalendar_start_date', :class => 'datePicker'}
       = image_tag('Calendar_scheduleHS.png', :alt => 'Pick date from calendar' )
-  = f.input :ends_at, :label => 'Select end date', :readonly => true, :input_html => {:class => "datePicker"} 
+  = f.input :ends_at, :label => 'Select end date' do
+    = f.input_field :ends_at, :readonly => true 
+    %a{:href => '#', :id => 'imgCalendar_end_date', :class => 'datePicker'}
+      = image_tag('Calendar_scheduleHS.png', :alt => 'Pick date from calendar' )
   = f.input :number_of_days
   - if current_user.profile.nil?
     = f.input :contact_address, :required => true
