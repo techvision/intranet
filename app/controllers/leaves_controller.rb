@@ -89,19 +89,18 @@ class LeavesController < ApplicationController
       respond_to do |format|
       if @leave.errors.any? == false
         leave_details = @leave.user.leave_details.last
-        up_leaves = leave_details.available_leaves[@leave.leave_type.id.to_s].to_f - @leave.number_of_days
-        if leave_details.available_leaves[@leave.leave_type.id.to_s].eql? 0 or up_leaves.< 0
-          if up_leaves.< 0
+        diduct_leaves = leave_details.available_leaves[@leave.leave_type.id.to_s].to_f - @leave.number_of_days
+        if diduct_leaves.< 0
+          if leave_details.unpaid_leave.nil?
             leave_details.available_leaves[@leave.leave_type.id.to_s] = 0
-          leave_details.unpaid_leaves[@leave.leave_type.id.to_s].to_f += up_leaves.abs.to_f
+          leave_details.unpaid_leave = {@leave.leave_type.id.to_s => diduct_leaves.abs.to_f}
           else
-            leave_details.unpaid_leaves[@leave.leave_type.id.to_s].to_f += @leave.number_of_days.to_f
+            leave_details.unpaid_leave[@leave.leave_type.id.to_s] += @leave.number_of_days.to_f
           end
           @leave.status = "Approved"
           UserMailer.extra_leave(@leave).deliver if leave_details.save && @leave.save
         else
-          current_leaves = leave_details.available_leaves[@leave.leave_type.id.to_s].to_f - @leave.number_of_days.to_f
-          leave_details.available_leaves[@leave.leave_type.id.to_s] = current_leaves
+          leave_details.available_leaves[@leave.leave_type.id.to_s] = diduct_leaves
           @leave.status = "Approved"
           UserMailer.approveLeave(@leave, current_user).deliver if leave_details.save && @leave.save
         end
