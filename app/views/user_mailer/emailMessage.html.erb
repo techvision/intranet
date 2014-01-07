@@ -9,15 +9,17 @@ Hello,
 </i>
 <br/>
 <p>
-The <%= @user.roles %> <%= @user.email %> is applyed for leave for following reason:
+<%= @user.email %> have applyed for leaves.
+<br>
+reason:
 </br>
       <p><%= @leave.reason %>
       <br />
 from date:<br/>       <%= @leave.starts_at.strftime("%A, %B %d, %Y") %><br/> to  <br/> <%= @leave.ends_at.strftime("%A, %B %d, %Y") %></p>
 <p>You can Approve it by clicking on this link:   <%= link_to 'click hear', leaves_path(only_path: false,       host: [@user.organization.slug, '.',"niwantintranet.com"].join) %> to take action.
     <br />
-    <p>Thanks & regards!<br />
-  <%= @user.organization.name %> team </p>   
+    <p>Thanks and Regards,<br />
+  <%= @user.organization.name %> Team</p>   
   </body> 
 </html> 
 
