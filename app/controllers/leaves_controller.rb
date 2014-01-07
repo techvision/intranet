@@ -91,7 +91,7 @@ class LeavesController < ApplicationController
         leave_details = @leave.user.leave_details.last
         diduct_leaves = leave_details.available_leaves[@leave.leave_type.id.to_s].to_f - params[:leave]["number_of_days"].to_f
         if diduct_leaves.< 0
-          if leave_details.unpaid_leave.nil?
+          if leave_details.unpaid_leave[@leave.leave_type.id.to_s].nil?
             leave_details.available_leaves[@leave.leave_type.id.to_s] = 0
           leave_details.unpaid_leave = {@leave.leave_type.id => diduct_leaves.abs.to_f}
           else
