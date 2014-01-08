@@ -87,14 +87,13 @@ class LeavesController < ApplicationController
     if request.put?
       @leave.access_params(params[:leave], @leave.user.leave_details.last.available_leaves)
       respond_to do |format|
-        if @leave.errors.any? == false
+        @leave.status = "Approved"
+        if @leave.update_attributes(params[:leave])
           leave_details = @leave.user.leave_details.last
           diduct_leaves = leave_details.available_leaves[@leave.leave_type.id.to_s].to_f - params[:leave]["number_of_days"].to_f
           leave_details.available_leaves[@leave.leave_type.id.to_s] = diduct_leaves.to_f
-          @leave.status = "Approved"
-          @leave.starts_at = params[:leave]["starts_at"]
-          @leave.ends_at = params[:leave]["ends_at"]
-          UserMailer.approveLeave(@leave, current_user).deliver if @leave.save && leave_details.save
+          leave_details.save
+          UserMailer.approveLeave(@leave, current_user).deliver
           format.html { redirect_to leaves_path, notice: 'Leave is successfully approved.' }          
           format.js
         else
