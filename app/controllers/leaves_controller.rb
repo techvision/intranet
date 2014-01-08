@@ -94,7 +94,7 @@ class LeavesController < ApplicationController
           @leave.status = "Approved"
           @leave.starts_at = params[:leave]["starts_at"]
           @leave.ends_at = params[:leave]["ends_at"]
-          UserMailer.approveLeave(@leave, current_user).deliver if leave_details.save && @leave.save
+          UserMailer.approveLeave(@leave, current_user).deliver if @leave.save && leave_details.save
           format.html { redirect_to leaves_path, notice: 'Leave is successfully approved.' }          
           format.js
         else
