@@ -66,9 +66,9 @@ date = date.to_s
               end
             end
             number_days = @available_leaves[@leave_params[:leave_type_id]]
-#            if number_of_days > number_days.to_f
-#              errors.add(:number_of_days, "Leaves are more than available. Available leaves are #{@available_leaves[@leave_params["leave_type_id"]]}")
-#            end
+            if number_of_days > number_days.to_f
+              errors.add(:number_of_days, "Leaves are more than available. Available leaves are #{@available_leaves[@leave_params["leave_type_id"]]}")
+            end
           end
         end
       end
