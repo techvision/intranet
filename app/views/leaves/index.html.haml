@@ -7,16 +7,12 @@
     %tr
       - @leave_types.each do |lt|
         %th= lt.name + " [Assign/Available]"
-      %th Leave Without Pay
     %tr
       - if @leave_details != nil
-        - unpaidLeaves = 0
         - @leave_types.each do |lt|               
           - if @leave_details.assign_leaves[lt.id.to_s] != ""
             %td=  " #{@leave_details.assign_leaves[lt.id.to_s]} / #{@leave_details.available_leaves[lt.id.to_s]} "
-          - if @leave_details.unpaid_leave != nil
-            - unpaidLeaves += " #{@leave_details.unpaid_leave[lt.id.to_s]}".to_f
-        %td= unpaidLeaves 
+
 %h1 Applied leaves
 
 = page_entries_info @leaves
