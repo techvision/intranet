@@ -16,7 +16,7 @@ class Leave
   field :reject_reason, type: String
   field :number_of_days, type: Float
 
-  validates :reason, :contact_address, :contact_number, :leave_type_id,  :presence => true
+  validates :reason, :contact_address, :contact_number, :leave_type_id, :number_of_days,  :presence => true
   validates :starts_at, :presence => true
   validates :ends_at, :presence => true
   validates :reject_reason, :presence => true, :if => :reject_reason_validation?
