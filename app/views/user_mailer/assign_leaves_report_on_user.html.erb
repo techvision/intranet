@@ -5,11 +5,7 @@
   </head>   
   <body>
 <i>
-<% if @user.profile.nil? %>
-  Hello <%= @user.email %>
-<% else %>
-  Hello <%= @user.name %>
-<% end %>
+  Hello <%= @user.profile.nil? ? @user.email.split("@").first : @user.name %>
 </i>
 <br/>
 <p>as a [<%= @user.roles %>] of [<%= @user.organization.name %>], you have been assigned leave for the year[<%= Date.today.year %>].
@@ -18,7 +14,7 @@ Please check the assigned leaves details by clicking on link below.<br>
 <br>
 <br>
 <b>Warm Regards<br>
-<%= @user.organization.name %> LMS team</b>
+<%= @user.organization.name %> team</b>
   
   </body> 
 </html> 

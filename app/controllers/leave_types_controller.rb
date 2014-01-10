@@ -30,7 +30,7 @@ before_filter :current_organization
     @leave_type.organization = current_organization
     respond_to do |format|
       if @leave_type.save
-        format.html { redirect_to leave_types_path, notice: 'Leave type was successfully created.' }
+        format.html { redirect_to leave_types_path, notice: 'Leave type is successfully created.' }
         format.json { render json: @leave_type, status: :created, location: @leave_type }
       else
         format.html { render action: "new" }

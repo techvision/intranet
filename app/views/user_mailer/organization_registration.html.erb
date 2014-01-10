@@ -5,12 +5,14 @@
   </head>   
   <body>
 <i>
-Hello <%= @user.email %>
+Hello <%= @user.email.split("@").first %>
 </i>
 <br/>
 <p>Welcome to Leave Management System!<br>
 <br>
-Thank you for choosing Niwant's Leave management system. Your domain name is:
+Thank you for showing interest in our Intranet System and we
+can assure you that you have made a right choice by showing faith in us.<br>
+Your domain name is:
 <br>
 <br>
   <%= [@user.organization.slug, '.',"niwantintranet.com"].join	 %><br>

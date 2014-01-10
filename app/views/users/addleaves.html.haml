@@ -1,5 +1,8 @@
 - content_for :javascript do
   = javascript_include_tag 'assignLeaves', 'user'
-%h1 Assign leaves
-%td= select_tag 'user', options_from_collection_for_select(current_organization.users.ne(:email => current_user.email).entries, :id, :email), :id => "cmbuser", :prompt => "Select user"
-%div{:id => "assign_leaves"}
+.form
+  %h3 Assign leaves
+  %hr
+  %label User:
+  = select_tag 'user', options_from_collection_for_select(current_organization.users.ne(:email => current_user.email).entries, :id, :email), :id => "cmbuser", :prompt => "Select user"
+  #assign_leaves

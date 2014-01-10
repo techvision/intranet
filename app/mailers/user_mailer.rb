@@ -2,7 +2,7 @@ class UserMailer < ActionMailer::Base
 
   def organizationRegistration(organization)
     @user = organization.users.find_by(:roles => "Admin")
-    mail(:from => "niwant.techvision@gmail.com", :to => @user.email, :subject => "Thank you for registering with joshintranet.com", :template_path => "user_mailer", :template_name => "organization_registration")
+    mail(:from => "niwant.techvision@gmail.com", :to => @user.email, :subject => "Organization registration", :template_path => "user_mailer", :template_name => "organization_registration")
   end  
 
   def assignLeaveReport(user)
@@ -18,7 +18,7 @@ class UserMailer < ActionMailer::Base
     @user = user
     @leave = leave
     @user_role = user_role
-    mail(:from => "niwant.techvision@gmail.com", :to => @user_role, :subject => "Apply leave", :template_path => "user_mailer", :template_name => "emailMessage")
+    mail(:from => "niwant.techvision@gmail.com", :to => @user_role, :subject => "Leave Application", :template_path => "user_mailer", :template_name => "emailMessage")
   end
 
   def rejectStatusLeave(leave, user)
@@ -30,7 +30,7 @@ class UserMailer < ActionMailer::Base
       def approveLeave(leave, user)
         @leave = leave
         @user = user
-        mail(:from => "niwant.techvision@gmail.com", :to => @leave.user.email, :subject => "Leave has been approve", :template_path => "user_mailer", :template_name => "appr")
+        mail(:from => "niwant.techvision@gmail.com", :to => @leave.user.email, :subject => "Leave Application Approval", :template_path => "user_mailer", :template_name => "appr")
       end
 
       def cansleLeave(leave, user)

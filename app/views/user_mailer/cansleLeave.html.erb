@@ -4,29 +4,13 @@
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />   
   </head>   
 <body>
-<% if @leave.user.profile.nil? %>
-<p> <i> Hello <%= @leave.user.email %>, </i> </p>
-<% else %>
-<p>
-<i>
-Hello
-<%= @leave.user.profile.name %>,</i>
-</p>
-<% end %>
+<p> <i> Hello <%= @leave.user.profile.nil? ? @leave.user.email.split("@").first : @leave.user.name %>, </i> </p>
 </br>
-<% if @user.profile.nil? %>
 <p>
-Your leave has  been canceled by your <%= @user.roles %> <%= @user.email %>
-</p>
-<% else %>
-
-<p>
-Your leave has been canceled by your <%= @user.roles %> <%= @user.profile.name %>
-<% end %>
-
+Your leave has  been canceled by your <%= @user.roles %> <%= @user.profile.nil? ? @user.email : @user.name %>
 </p>
 </br>
-Regards,
+Thanks and Regards,
 </br>
 <%= @user.organization.name %> team
 </body>

@@ -19,10 +19,11 @@
 //= require Acc.DC.API
 //= require calendar_generator 
 //= require calendar_generator.min
-
+//= require jquery.dataTables
 
 $(document).ready(function() {
   $('.alert').alert();
   //$('.alert').delay(2000).fadeOut("slow", function () { $(this).remove(); })
+  $('.table').dataTable();
 })
 

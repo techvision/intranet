@@ -3,8 +3,7 @@ class LeavesController < ApplicationController
   load_and_authorize_resource
 
   def index        
-    @leaves = current_organization.leaves.accessible_by(current_ability).desc(:id).page(params[:page])
-    Kaminari.paginate_array(@leaves).page(params[:page])
+    @leaves = current_organization.leaves.accessible_by(current_ability).desc(:id)
     current_user.leave_details.each do |l|
       if l.assign_date.year == Date.today.year
         @leave_details = l
@@ -15,6 +14,7 @@ class LeavesController < ApplicationController
       format.html # index.html.haml
       format.json { render json: @leaves }
     end
+    p @leaves
   end
 
   def show
@@ -54,7 +54,7 @@ class LeavesController < ApplicationController
           UserMailer.leaveReport(@leave,current_user, user_role).deliver
           format.json {render json: @leave, status: :created}
         end
-	format.html {redirect_to leaves_path, notice: 'Your request has been noted' }
+	format.html {redirect_to leaves_path, notice: 'Your Leave Application is pending for Approval.' }
         format.json {render json: @leave, status: :created}
       else
         @profile = current_user.profile
@@ -138,6 +138,7 @@ class LeavesController < ApplicationController
           l.available_leaves[@leave.leave_type_id.to_s] = tmp_num
           l.save
           @leave.destroy
+          UserMailer.cansleLeave(@leave, user).deliver
           redirect_to leaves_url, notice: 'Applied leave is deleted successfully.'
         end
       end

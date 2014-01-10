@@ -2,19 +2,21 @@
   = javascript_include_tag 'assignLeaves'
 = simple_form_for @user, url: assignleaves_path(@user), method: :post, html: {:class => 'form-horizontal'} do |f|
   - if @user.leave_details.last.new_record
-    Date:
+    %label Date:
     = text_field_tag "date", "#{Date.today}", :readonly => true, :class => "datepicker" 
     - @leave_types.each do |lt|
-      #{lt.name}:
+      %label #{lt.name}:
       = text_field_tag "assign_leaves[#{lt.id}]", "#{@assign_leaves[lt.id]}"	
   - else
-    Date:
+    %label Date:
     = text_field_tag "date", "#{@user.leave_details.last.assign_date}", :readonly => true, :class => "datepicker" 
     - @leave_types.each do |lt|
-      #{lt.name}:
+      %label #{lt.name}:
       = text_field_tag "assign_leaves[#{lt.id}]", "#{@assign_leaves[lt.id.to_s]}"	
-  = f.submit "Assign leaves"
-= link_to 'Cancel', addleaves_path, class: 'btn btn-large btn-success'
+
+  .form-actions
+    = f.submit "Assign leaves", class: 'btn btn-success'
+    = link_to 'Cancel', addleaves_path, class: 'btn btn-danger'
 %br
 :javascript
   $('.datepicker').datepicker({
