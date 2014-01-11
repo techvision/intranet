@@ -21,8 +21,9 @@
     = f.input :contact_number, :required => true
   - else
     = f.input :contact_number, :input_html => {:value => "#{current_user.profile.phone_number}"}
-  = f.submit "Apply", class: 'btn btn-large btn-success'
-  = link_to 'Cancel', leaves_path, class: 'btn btn-large btn-success'
+  .form-actions
+    = f.submit "Apply", class: 'btn btn-success'
+    = link_to 'Cancel', leaves_path, class: 'btn btn-danger'
 
 :javascript
   $('#datepicker').datepicker({})

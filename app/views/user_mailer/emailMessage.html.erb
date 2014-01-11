@@ -9,14 +9,14 @@ Hello,
 </i>
 <br/>
 <p>
-<%= @user.email %> have applyed for leaves.
+Leave Application of <%= @user.profile.nil? ? @user.email.split("@").first : @user.name %> is pending for approval.
 <br>
 reason:
 </br>
       <p><%= @leave.reason %>
       <br />
 from date:<br/>       <%= @leave.starts_at.strftime("%A, %B %d, %Y") %><br/> to  <br/> <%= @leave.ends_at.strftime("%A, %B %d, %Y") %></p>
-<p>You can Approve it by clicking on this link:   <%= link_to 'click hear', leaves_path(only_path: false,       host: [@user.organization.slug, '.',"niwantintranet.com"].join) %> to take action.
+<p>You can approve the same by clicking the link below:   <%= link_to 'Link approve', leaves_path(only_path: false,       host: [@user.organization.slug, '.',"niwantintranet.com"].join) %> to take action.
     <br />
     <p>Thanks and Regards,<br />
   <%= @user.organization.name %> Team</p>   

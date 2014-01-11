@@ -6,7 +6,7 @@
   <body>
 <p>
   <i>
-  Hello <%= @leave.user.email %>,
+  Hello <%= @leave.user.profile.nil? ? @leave.user.email.split("@").first : @leave.user.name %>,
   </i>
   <br/>
   <br/>
@@ -17,7 +17,7 @@ leaves you are applying on dated from <%= @leave.starts_at.strftime("%B %d ") %>
 <br/>
 Don't hesitate to get back to us if you have any query.
 <br/>
-Regards,
+Thanks and Regards,
 <br/>
 <%= @leave.user.organization.name %> team
 </p>

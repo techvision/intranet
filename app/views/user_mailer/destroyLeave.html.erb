@@ -10,18 +10,11 @@ Hello Admin,
 </p>
 </br>
 </br>
-<% if @user.profile.nil? %>
 <p>
-<%= @user.roles %> <%= @user.email %> has canceled leave that was applied. 
+<%= @user.roles %> <%= @user.profile.nil? ? @user.email : @user.name %> has canceled leave that was applied. 
 </p>
-<% else %>
-<p>
-<%= @user.roles %> <%= @user.name%> has canceled leave that was applied.
-<% end %>
-</p>
-
 </br>
-regards,
+Thanks and Regards,
 </br>
 <%= @user.organization.name %> team
 </body>

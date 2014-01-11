@@ -4,25 +4,13 @@
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />   
   </head>   
     <body>
-<% if @leave.user.profile.nil? %>
-
-<p> <i> Hello <%= @leave.user.email %>, </i>
+<p> <i> Hello <%= @leave.user.profile.nil? ? @leave.user.email.split("@").first : @leave.user.name %>, </i>
 </p>
-<% else %>
-      <p>
-      <i> Hello <%= @leave.user.name %>,</i>
-</p>
-<% end %>
 </br>
 </br>
-<% if @user.profile.nil? %>
 <p>
-The <%= @user.roles %> <%= @user.email %>  has approved your leaves that you have applied from <%= @leave.starts_at.strftime("%d %B %Y") %> to</br> <%= @leave.ends_at.strftime("%d %B %Y") %>
-<% else %>
-
-<p>
-The <%= @user.roles %> <%= @user.name %>  has approved your leave that you have  applied from <%= @leave.starts_at %> to</br> <%= @leave.ends_at %>
-<% end %>
+Your Leave Application for leaves from <%= @leave.starts_at.strftime("%d %B %Y") %> to <%= @leave.ends_at.strftime("%d %B %Y") %>has been
+approved by <%= @user.roles %> <%= @user.profile.nil? ? @user.email : @user.name %>.
 </br>
 <br/>
 Thanks and Regards,

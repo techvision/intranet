@@ -1,16 +1,17 @@
-<p>Hello <%= @resource.email %>!</p>
+<p>Hello <%= @resource.email.split("@").first %>!</p>
 
 <br>
-Greetings!
+Greetings!<br>
 <p><%= @resource.organization.name %> invited you to: </br> 
 <%= link_to root_url( host: [@resource.organization.slug, '.',"niwantintranet.com"].join), root_url( host: [@resource.organization.slug, '.',"niwantintranet.com"].join) %></br>
 <br/>
-Please accept the invitation through link below.</p>
+Please accept the invitation by clicking the link below:</p>
 
-<p><%= link_to 'Accept invitation', accept_invitation_path(@resource, :invitation_token => @resource.invitation_token, only_path: false, 
+<p><%= link_to 'Accept link.', accept_invitation_path(@resource, :invitation_token => @resource.invitation_token, only_path: false, 
 host: [@resource.organization.slug, '.',"niwantintranet.com"].join) %></p>
 
-<p>Note: <br/> Your account won't be created until you accept the invitation and set the password.</p>
+<p>Note: <br/> In order to create your account, you are required to accept
+the invitation and set the password.</p>
 
 <p>Thanks and Regards, </br>
 <%= @resource.organization.name %> Team.</p>   

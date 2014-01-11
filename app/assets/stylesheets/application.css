@@ -8,11 +8,8 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require bootstrap_and_overrides
  *= require_tree .
- *= require jquery.ui.datepicker
  */
-
 
 
 
@@ -20,3 +17,17 @@
   text-align:center;
 }
 
+.table thead th{
+  border: 1px solid #DDDDDD !important;
+  background-color: #555555;
+  color: #FFFFFF
+}
+.table{
+  border: 1px solid #DDDDDD !important;
+}
+
+.form{
+  background-color: #FFFFFF;
+  padding: 20px;
+  float: center;
+}
