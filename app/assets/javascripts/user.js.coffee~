@@ -50,5 +50,6 @@ joinDate.blur ->
       dtMonth = "12"
   probationDate = new Date(m[3], dtMonth - 1, m[1])
   myVar = new Date(probationDate.setMonth probationDate.getMonth() + 6)  
-  # newVar = myVar.toLocaleDateString()
-  $('#user_probation_end_date').val(myVar)
+  pMonth = myVar.getMonth() + 1
+  newVar = myVar.getDate() + "-" +  pMonth + "-" + myVar.getFullYear() 
+  $('#user_probation_end_date').val(newVar)
