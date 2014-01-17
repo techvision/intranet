@@ -31,3 +31,26 @@
   padding: 20px;
   float: center;
 }
+
+.footer{
+  position: absolute;
+  bottom: 0;
+  height: 85px;
+  clear:both;
+  color:#fff;
+  width: 100%;
+  padding-top: 10px;
+  .nav > li > a {
+    display: inline;
+    &.josh {
+      background: #fff;
+      height: 35px;
+      display: inline-block;
+      padding: 3px;
+    }
+  }
+  .span4 {
+    text-align: center;
+  }
+}
+

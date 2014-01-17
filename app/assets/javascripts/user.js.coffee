@@ -11,11 +11,6 @@ $(document).ready ->
       $("#user_manager_id").parent().parent().show() 
     else
       $("#user_manager_id").parent().parent().hide()
-  $('.datepicker').datepicker({
-     dateFormat: "dd/mm/yy",  
-     changeMonth: true,
-     changeYear: true
-   })
 
 payRole = $('#user_pay_role')
 payRole .click ->
@@ -23,16 +18,38 @@ payRole .click ->
     $("#leave_type").show()
   else
     $("#leave_type").hide()
-#   alert "well" 
-#else
-#  alert("no could not find")
+
 joinDate = $('#user_join_date')
 joinDate.blur ->
-  alert(joinDate.val);
-  regex=/(\d{2})\/(\d{2})\/(\d{4})/
-  m=regex.exec(joinDate.val())
-
-  probationDate = new Date(m[3], m[2]-1, m[1])
+  regex = /^(\d{1,2})-([a-zA-Z]{3,})-(\d{4})$/
+  m = regex.exec(joinDate.val())
+  switch m[2]
+    when "January"
+      dtMonth = "01"
+    when "February"
+      dtMonth = "02"
+    when "March"
+      dtMonth = "03"
+    when "April"
+      dtMonth = "04"
+    when "May"
+      dtMonth = "05"
+    when "June"
+      dtMonth = "06"
+    when "July"
+      dtMonth = "07"
+    when "August"
+      dtMonth = "08"
+    when "September"
+      dtMonth = "09"
+    when "October"
+      dtMonth = "10"
+    when "November"
+      dtMonth = "11"
+    when "December"
+      dtMonth = "12"
+  probationDate = new Date(m[3], dtMonth - 1, m[1])
   myVar = new Date(probationDate.setMonth probationDate.getMonth() + 6)  
- # newVar = myVar.toLocaleDateString()
-  $('#user_probation_end_date').val(myVar)
+  pMonth = myVar.getMonth() + 1
+  newVar = myVar.getDate() + "-" +  pMonth + "-" + myVar.getFullYear() 
+  $('#user_probation_end_date').val(newVar)
