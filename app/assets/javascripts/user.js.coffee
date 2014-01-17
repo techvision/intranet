@@ -28,8 +28,10 @@ payRole .click ->
 #  alert("no could not find")
 joinDate = $('#user_join_date')
 joinDate.blur ->
+  alert(joinDate.val);
   regex=/(\d{2})\/(\d{2})\/(\d{4})/
   m=regex.exec(joinDate.val())
+
   probationDate = new Date(m[3], m[2]-1, m[1])
   myVar = new Date(probationDate.setMonth probationDate.getMonth() + 6)  
  # newVar = myVar.toLocaleDateString()

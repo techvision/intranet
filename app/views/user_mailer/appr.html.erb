@@ -9,12 +9,12 @@
 </br>
 </br>
 <p>
-Your Leave Application for leaves from <%= @leave.starts_at.strftime("%d %B %Y") %> to <%= @leave.ends_at.strftime("%d %B %Y") %>has been
+Your Leave Application for leaves from <%= @leave.starts_at.strftime("%d %B %Y") %> to <%= @leave.ends_at.strftime("%d %B %Y") %> has been
 approved by <%= @user.roles %> <%= @user.profile.nil? ? @user.email : @user.name %>.
 </br>
 <br/>
 Thanks and Regards,
-</br>
-<%= @user.organization.name %> Team
+<br/>
+<%= @user.organization.name.capitalize %> Team
 </body>
 </html>
