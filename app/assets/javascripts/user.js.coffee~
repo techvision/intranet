@@ -21,6 +21,14 @@ payRole .click ->
 
 joinDate = $('#user_join_date')
 joinDate.blur ->
+<<<<<<< HEAD
+  alert(new Date(joinDate));
+  regex=/(\d{2})\/(\d{2})\/(\d{4})/
+  m=regex.exec(joinDate.val())
+  alert(m);
+
+  probationDate = new Date(m[3], m[2]-1, m[1])
+=======
   regex = /^(\d{1,2})-([a-zA-Z]{3,})-(\d{4})$/
   m = regex.exec(joinDate.val())
   switch m[2]
@@ -49,6 +57,7 @@ joinDate.blur ->
     when "December"
       dtMonth = "12"
   probationDate = new Date(m[3], dtMonth - 1, m[1])
+>>>>>>> 7b2113f855b3db15d89b66612a758499497ea49f
   myVar = new Date(probationDate.setMonth probationDate.getMonth() + 6)  
   pMonth = myVar.getMonth() + 1
   newVar = myVar.getDate() + "-" +  pMonth + "-" + myVar.getFullYear() 
