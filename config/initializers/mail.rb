@@ -4,7 +4,7 @@ if Rails.env.development?
     port:                 587,
     domain:               'joshintranet.com',
     user_name:            'niwant.techvision@gmail.com',
-    password:             'namv1234',
+    password:             'namv@tvss',
     authentication:       'plain',
     enable_starttls_auto: true }
 end

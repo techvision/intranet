@@ -9,7 +9,7 @@
 </br>
 </br>
 <p>
-Your Leave Application for leaves from <%= @leave.starts_at.strftime("%d %B %Y") %> to <%= @leave.ends_at.strftime("%d %B %Y") %> has been
+Your Leave Application for leaves from <%= @leave.starts_at.strftime("%d %B %Y") %> to <%= @leave.ends_at.strftime("%d %B %Y") %> for <%= @leave.number_of_days.to_s %> days has been
 approved by <%= @user.roles %> <%= @user.profile.nil? ? @user.email : @user.name %>.
 </br>
 <br/>

@@ -9,9 +9,9 @@
 <p>
 Your leave has  been canceled by your <%= @user.roles %> <%= @user.profile.nil? ? @user.email : @user.name %>
 </p>
-</br>
+<br/>
 Thanks and Regards,
-</br>
-<%= @user.organization.name %> team
+<br/>
+<%= @user.organization.name.capitalize %> team
 </body>
 </html>

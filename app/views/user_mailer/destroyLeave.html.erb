@@ -13,9 +13,9 @@ Hello Admin,
 <p>
 <%= @user.roles %> <%= @user.profile.nil? ? @user.email : @user.name %> has canceled leave that was applied. 
 </p>
-</br>
+<br/>
 Thanks and Regards,
-</br>
-<%= @user.organization.name %> team
+<br/>
+<%= @user.organization.name.capitalize %> team
 </body>
 </html>
