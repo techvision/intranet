@@ -12,7 +12,10 @@
     = text_field_tag "date", "#{@user.leave_details.last.assign_date}", :readonly => true, :class => "datepicker" 
     - @leave_types.each do |lt|
       %label #{lt.name}:
-      = text_field_tag "assign_leaves[#{lt.id}]", "#{@assign_leaves[lt.id.to_s]}"	
+      - if @assign_leaves[lt.id.to_s].nil? 
+        = text_field_tag "assign_leaves[#{lt.id}]", lt.auto_increament == false ? lt.max_no_of_leaves : lt.number_of_leaves   
+      - else
+        = text_field_tag "assign_leaves[#{lt.id}]", "#{@assign_leaves[lt.id.to_s]}"	
 
   .form-actions
     = f.submit "Assign leaves", class: 'btn btn-success'
