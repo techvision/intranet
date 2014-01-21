@@ -30,11 +30,8 @@
         %th Action
     %tbody
       - @leaves.each do |leave|                                       
-        %tr
-          - if leave.user.profile.nil?
-            %td= leave.user.email
-          - else
-            %td= leave.user.name
+        %tr          
+          %td= leave.user.profile.nil? ? leave.user.email : leave.user.name                    
           %td= leave.leave_type.name
           %td= leave.reason
           %td= leave.starts_at.strftime("%A, %B %d, %Y")
