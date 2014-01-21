@@ -73,7 +73,7 @@ class User
   # field :authentication_token 
 
   belongs_to :organization
-  has_many :leaves, class_name: "Leave"
+  has_many :leaves, class_name: "Leave", dependent: :destroy
 
   # using self joyngs to maintain the relationship between employee and manager.
   has_many :employees, class_name: "User", :foreign_key => "manager_id"
