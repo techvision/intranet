@@ -7,16 +7,16 @@
 <i>
   Hello <%= @user.profile.nil? ? @user.email.split("@").first : @user.name %>
 </i>
-<br/>
+<br>
 <p>as a [<%= @user.roles %>] of [<%= @user.organization.name %>], you have been assigned leave for the year[<%= Date.today.year %>].
 Please check the assigned leaves details by clicking on link below.<br>
 <%= link_to "Click heare", leaves_path(only_path: false, host: [@user.organization.slug, '.',"niwantintranet.com"].join)
 <br>
 <br>
-<br/>
 Warm Regards,
-<br/>
+<br>
 <%= @user.organization.name.capitalize %> team
+
   
   </body> 
 </html> 
