@@ -61,7 +61,7 @@ class LeavesController < ApplicationController
         format.html {render action: "new"}
 	format.json { render json: @leave.errors, status: :unprocessable_entity }
       end
-  end
+    end
   end
 
   def edit

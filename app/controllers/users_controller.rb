@@ -72,11 +72,15 @@ class UsersController  < ApplicationController
       @user.leave_details.build if @user.leave_details.empty?
       @user.leave_details.last.assign_date = params[:date]
       @user.leave_details.last.assign_leaves = params[:assign_leaves]
-      @user.leave_details.last.available_leaves = params[:assign_leaves]
+      params[:assign_leaves].keys.each do |lt_id|
+        if @user.leave_details.last.available_leaves[lt_id.to_s].nil?
+          @user.leave_details.last.available_leaves[lt_id] = params[:assign_leaves][lt_id.to_s]
+        end
+      end
       @user.leave_details.last.save
       redirect_to addleaves_path, notice: "leaves has been assign successfully."
     end    
- end
+  end
 
   def chengeroles
     @user = User.find(params[:user_id])

@@ -7,13 +7,14 @@ Greetings!<br>
 <br/>
 Please accept the invitation by clicking the link below:</p>
 
-<p><%= link_to 'Accept link.', accept_invitation_path(@resource, :invitation_token => @resource.invitation_token, only_path: false, 
+<p><%= link_to 'Accept invitation.', accept_invitation_path(@resource, :invitation_token => @resource.invitation_token, only_path: false, 
 host: [@resource.organization.slug, '.',"niwantintranet.com"].join) %></p>
 
 <p>Note: <br/> In order to create your account, you are required to accept
 the invitation and set the password.</p>
 
+<p>Thanks and Regards, <br/>
 <p>Thanks and Regards, </br>
-<%= @resource.organization.name %> Team.</p>   
+<%= @resource.organization.name.capitalize %> Team.</p>   
 
  
