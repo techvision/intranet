@@ -36,6 +36,6 @@ every 1.day, :at => '5:30 am' do
 runner "User.date_of_birth"
 end
 
-scheduler.cron '0 0 1 1 *' do
+every :year do
   runner "Leave.assign_leave"
 end
