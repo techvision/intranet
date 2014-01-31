@@ -6,8 +6,8 @@
   = f.input :starts_at, :label => 'Start date', :input_html => {:value => "#{@leave.starts_at.strftime("%A, %B %d, %Y")}", :class => "datepicker"}, :readonly => true 
   = f.input :ends_at, :label => 'End date', :input_html => {:value => "#{@leave.ends_at.strftime("%A, %B %d, %Y")}", :class => "datepicker"}, :readonly => true
   = f.input :number_of_days, :input_html => {:value => "#{@leave.number_of_days}"}
-  = f.submit "Submit", class: "btn btn-success", :input_html => {:id => "btn_submit"}
-  = link_to "Cancel", leaves_path, class: "btn btn-danger"
+  = f.submit "Submit", class: "btn btn-success", :id => "approvebutton"
+  = link_to " Cancel", leaves_path, class: "btn btn-danger", :id => 'cancel_approved_leave'
 :javascript
   $('.datepicker').datepicker({
      dateFormat: "dd/mm/yy",  

@@ -5,13 +5,14 @@
   </head>   
 <body>
 <p> <i> Hello <%= @leave.user.profile.nil? ? @leave.user.email.split("@").first : @leave.user.name %>, </i> </p>
-</br>
+<br>
 <p>
 Your leave has  been canceled by your <%= @user.roles %> <%= @user.profile.nil? ? @user.email : @user.name %>
 </p>
-<br/>
+<br>
+<br>
 Thanks and Regards,
-</br>
+<br>
 <%= @user.organization.name.capitalize %> team
 </body>
 </html>

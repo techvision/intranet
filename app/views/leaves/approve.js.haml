@@ -5,3 +5,9 @@ $('#error').html('')
 - else
   - if @leave.update_attributes
     window.location.href = "leaves"
+submitButton = $('#approvemodel #approvebutton')
+cancelApprovedLeave = $('#approvemodel #cancel_approved_leave')
+submitButton.click(function() {
+cancelApprovedLeave.removeAttr('href');
+submitButton.attr('disabled', true);
+});

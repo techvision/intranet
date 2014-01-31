@@ -1,7 +1,0 @@
-.form
-  - if current_user.profile.nil?
-    %h3 Create your profile
-  - else
-    %h3 Edit your profile
-  %hr
-  = render 'frmprofile'

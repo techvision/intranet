@@ -77,7 +77,6 @@ class UsersController  < ApplicationController
           @user.leave_details.last.available_leaves[lt_id] = params[:assign_leaves][lt_id.to_s]
         end
       end
-      @user.leave_details.last.available_leaves = params[:assign_leaves]  
       @user.leave_details.last.save
       redirect_to addleaves_path, notice: "leaves has been assign successfully."
     end    

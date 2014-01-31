@@ -1,9 +1,0 @@
-%p
-  %ul
-    %li Activate the Calendar link to open the Calendar Picker control.
-    %li Mouse users can click the Left or Right arrows to navigate by month, or click a date to set focus to a selection; Click the selection that has focus to save the date and close the calendar.
-    %li Keyboard users can press the Arrow keys to navigate by date in the same manner as a tabular grid; Press the Home or End keys to move to the beginning or end of a row.
-    %li Press Shift+Tab to activate the Previous Month or Next Month buttons, press PageDown or PageUp to move backward or forward in one month intervals, or press Alt+PageDown or Alt+PageUp to move backward or forward in one year intervals instead.
-    %li Press Enter on a date to make a selection, or press Escape or Tab to close the popup.
-    %li In Advanced Mode, press the Spacebar on a date to open the Comment Editor, or click the Edit button instead.
-  

@@ -13,3 +13,4 @@ leaveType.blur ->
   ltp = ""
   ltp = $(leaveType.val())
  # alert(leaveType.val())
+
