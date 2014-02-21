@@ -1,6 +1,8 @@
 class LeaveType
   include Mongoid::Document
   belongs_to :organization
+  has_many :leaves, dependent: :destroy
+
   field :name, type: String
   field :max_no_of_leaves, type: Float
   field :auto_increament, type: Boolean

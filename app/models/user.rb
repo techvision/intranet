@@ -32,10 +32,10 @@ class User
   field :next_year_of_probation_date, type: Date
   validates :join_date, :employee_id, :roles, :presence => true
   validates :employee_id, :uniqueness => {:scope => :organization_id}
-  validates :email, :presence => true
-  validates_uniqueness_of :email, :scope => :organization_id
+  #validates :email, :presence => true
+#  validates_uniqueness_of :email, :scope => :organization_id
 
-  validates :email, :format => {:with => /^[-a-z0-9_+\.]+\@([-a-z0-9]+\.)+[a-z0-9]{2,4}$/i , :message => "Invalid email address" }
+#  validates :email, :format => {:with => /^[-a-z0-9_+\.]+\@([-a-z0-9]+\.)+[a-z0-9]{2,4}$/i , :message => "Invalid email address" }
  # validates_attachment :leaving_Certificate, :presence => true, :content_type => { :content_type => ['image/jpg', 'image/png', 'image/jpeg']}
 
   attr_accessible :email, :password, :password_confirmation, :roles, :organization_id, :join_date, :employee_id, :manager_id, :probation_end_date, :pay_role, :leaving_Certificate
@@ -84,12 +84,6 @@ class User
 
   # use the name field directly user field for example @user.name
   delegate :name, :to => :profile
-  def email_required?
-    false
-  end
-  def email_changed?
-    false
-  end
   def send_confirmation_instructions
     super
     self.confirmation_token = nil    # clear's the confirmation_token

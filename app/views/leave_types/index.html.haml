@@ -19,9 +19,10 @@
           %td= leave_type.max_no_of_leaves
           %td= leave_type.number_of_leaves      
           %td= leave_type.can_apply
-          %td
-            = link_to 'Edit', edit_leave_type_path(leave_type), :class => 'btn btn-mini'
-            = link_to 'Delete', leave_type, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-mini'
+          - if leave_type.leaves.empty?
+            %td
+              = link_to 'Edit', edit_leave_type_path(leave_type), :class => 'btn btn-mini'
+              = link_to 'Delete', leave_type, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-mini'
 
   %br
 
