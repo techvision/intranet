@@ -7,13 +7,13 @@
 <i>
 Hello <%= @user_role %>
 </i>
-<br/>
+<br>
 <p>
 Leave Application of <%= @user.profile.nil? ? @user.email.split("@").first : @user.name %> is pending for approval.
 <br/>
 <br>
 reason:
-<br/>
+<br>
       <p><%= @leave.reason %>
       <br />
 from date:<br/>       <%= @leave.starts_at.strftime("%A, %B %d, %Y") %><br/> to  <br/> <%= @leave.ends_at.strftime("%A, %B %d, %Y") %></p>
