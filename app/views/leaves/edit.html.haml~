@@ -1,6 +1,0 @@
-.form
-  %h3 Editing leave
-
-  = render 'form'
-
-

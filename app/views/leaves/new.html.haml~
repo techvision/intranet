@@ -1,4 +1,0 @@
-.form
-  %h3 Apply Leaves
-  .content
-    = render 'form'

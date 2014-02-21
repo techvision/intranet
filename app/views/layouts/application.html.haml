@@ -12,7 +12,7 @@
     = stylesheet_link_tag "application", :media => "all"
 
   %body
-    - if browser.ie? && browser.version.to_i <9
+    - if browser.ie? && browser.version.to_i <=9
       %p.disclaimer You are running an older browser, please upgrade to IE 9 +
     - if browser.firefox? && browser.version.to_i < 20
       %p.disclaimer You are running an older browser please upgrade to Firefox 20 +

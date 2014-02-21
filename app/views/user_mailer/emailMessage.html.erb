@@ -5,17 +5,13 @@
   </head>   
   <body>
 <i>
-Hello,
+Hello <%= @user_role %>
 </i>
 <br/>
 <p>
-<<<<<<< HEAD
 Leave Application of <%= @user.profile.nil? ? @user.email.split("@").first : @user.name %> is pending for approval.
 <br/>
-=======
-Leave Application of <%= @user.profile.nil? ? @user.email : @user.name %> is pending for approval.
 <br>
->>>>>>> cebd60eb21d0911adc6428045c9bb49d233bd78e
 reason:
 <br/>
       <p><%= @leave.reason %>
@@ -24,10 +20,8 @@ from date:<br/>       <%= @leave.starts_at.strftime("%A, %B %d, %Y") %><br/> to 
 <p>You can approve the same by clicking the link below:   <%= link_to 'Link approve', leaves_path(only_path: false,       host: [@user.organization.slug, '.',"niwantintranet.com"].join) %> to take action.
     <br/>
     <p>Thanks and Regards,<br/>
-<p>You can approve the same by clicking the link below:   <%= link_to 'Approve', leaves_path(only_path: false,       host: [@user.organization.slug, '.',"niwantintranet.com"].join) %> to take action.
     <br />
-    <p>Thanks and Regards,<br/>
-  <%= @user.organization.name.capitalize %> Team</p>   
+    <%= @user.organization.name.capitalize %> Team</p>   
   </body> 
 </html> 
 

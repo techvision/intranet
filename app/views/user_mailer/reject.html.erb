@@ -6,7 +6,7 @@
   <body>
 <p> <i> Hello <%= @leave.user.profile.nil? ? @leave.user.email.split("@").first : @leave.user.name %>, </i> </p>
 <p>
-The leave you applied from <%= @leave.starts_at %> to</br> <%= @leave.ends_at %> has been regected by your <%= @user.roles %> <%= @user.profile.nil? ? @user.email : @user.name %> for the following reason that has been specified.
+The leave you applied from <%= @leave.starts_at %> to</br> <%= @leave.ends_at %> has been rejected by your <%= @user.roles %> <%= @user.profile.nil? ? @user.email : @user.name %> for the following reason that has been specified.
 </br>
 
 <ul>
