@@ -22,7 +22,10 @@
       =p.input :twitter_handle
       =p.input :linkedin_name, :label => 'Linkedin Name'
     .form-actions
-      = u.submit"Create Profile", class: 'btn btn-success'
+      - if current_user.profile.nil?
+        = u.submit "Create Profile", class: 'btn btn-success'
+      - else
+        = u.submit "Update Profile", class: 'btn btn-success'
       - if current_user.profile.nil?
         = link_to 'Skip', leaves_path, class: 'btn btn-danger'
       - else

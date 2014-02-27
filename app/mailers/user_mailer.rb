@@ -36,12 +36,12 @@ class UserMailer < ActionMailer::Base
       def cansleLeave(leave, user)
         @leave = leave
         @user = user
-        mail(:from => "niwant.techvision@gmail.com", :to => @leave.user.email, :subject => ' Your Leave has been canseld', :template_path => 'user_mailer', :template_name => 'cansleLeave')
+        mail(:from => "niwant.techvision@gmail.com", :to => @leave.user.email, :subject => ' Your Leave has been canceled', :template_path => 'user_mailer', :template_name => 'cansleLeave')
 	      end
 	          def destroyLeave(user, user_r)
 		        @user = user
       @user_r = user_r
-      mail(:from => "niwant.techvision@gmail.com", :to => @user_r, :subject => 'Canselation of leave', :template_path => 'user_mailer', :template_name => 'destroyLeave')
+      mail(:from => "niwant.techvision@gmail.com", :to => @user_r, :subject => 'Cancelation of leave', :template_path => 'user_mailer', :template_name => 'destroyLeave')
           end
 
   def send_leave(user_admin, user, leave)
