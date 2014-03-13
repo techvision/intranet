@@ -39,6 +39,7 @@ GEM
       bson (~> 1.9.2)
     builder (3.0.4)
     cancan (1.6.10)
+    chagol (0.0.4)
     chronic (0.10.2)
     climate_control (0.0.3)
       activesupport (>= 3.0)
@@ -206,6 +207,7 @@ DEPENDENCIES
   browser
   bson_ext
   cancan
+  chagol
   coffee-rails (~> 3.2.1)
   country_select
   devise (= 2.1.2)

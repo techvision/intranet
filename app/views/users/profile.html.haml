@@ -22,11 +22,13 @@
       %th Passport Number
       %th Employee Id
       %th Joining Date
+      %th Role
     %tr
       %td= @user.profile.pan_number
       %td= @user.profile.passport_number
       %td= @user.employee_id
       %td= @user.join_date.strftime("%A, %B %d, %Y")
+      %td= @user.roles
 
   %h4 social media information:
   %table.table
