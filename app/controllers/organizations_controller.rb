@@ -45,8 +45,6 @@ class OrganizationsController < ApplicationController
 
     respond_to do |format|
       if @organization.save
-        texter = Chagol::SmsSender.new("9637290294","B3288N","way2sms")
-        texter.send("9637290294","Organization registered")
         UserMailer.organizationRegistration(@organization).deliver
         format.html { redirect_to root_url, notice: 'Your account successfully created.' }
         format.json { render json: @organization, status: :created, location: @organization }
