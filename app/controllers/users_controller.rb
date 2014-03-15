@@ -75,6 +75,14 @@ class UsersController  < ApplicationController
       params[:assign_leaves].keys.each do |lt_id|
         if @user.leave_details.last.available_leaves[lt_id.to_s].nil?
           @user.leave_details.last.available_leaves[lt_id] = params[:assign_leaves][lt_id.to_s]
+        else 
+#         @user.leave_details.last.available_leaves[lt_id].each do |a_l|
+        if @user.leave_details.last.available_leaves[lt_id].to_f > params[:assign_leaves][lt_id].to_f
+          @user.leave_details.last.available_leaves[lt_id] = params[:assign_leaves][lt_id.to_s]
+        end
+
+
+
         end
       end
       @user.leave_details.last.save
