@@ -1,0 +1,17 @@
+.form
+  %h3 Leaves summary
+  %hr
+  %table.table
+    %thead
+      %tr
+        %th Assigned date
+        - @leave_types.each do |lt|
+          %th= lt.name + " [Assign/Available]"
+    %tbody   
+      %tr
+        - @leave_details.each do |l|
+          - date = l.assign_date
+          %td= date.present? ? date : ''
+          - @leave_types.each do |lt|              
+            %td="#{l.assign_leaves[lt.id.to_s]} / #{l.available_leaves[lt.id.to_s]}"
+    

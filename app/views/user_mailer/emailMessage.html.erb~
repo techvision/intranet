@@ -1,0 +1,40 @@
+<!DOCTYPE html> 
+<html>   
+  <head>     
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />   
+  </head>   
+  <body>
+<i>
+Hello <%= @user_role %>
+</i>
+<br>
+<p>
+Leave Application of <%= @user.profile.nil? ? @user.email.split("@").first : @user.name %> is pending for approval.
+<<<<<<< HEAD
+<br/>
+=======
+>>>>>>> 68b54c8624506eabd1e2f24cb031a8830b47c2bb
+<br>
+reason:
+<br>
+      <p><%= @leave.reason %>
+<<<<<<< HEAD
+      <br />
+from date:<br/>       <%= @leave.starts_at.strftime("%A, %B %d, %Y") %><br/> to  <br/> <%= @leave.ends_at.strftime("%A, %B %d, %Y") %></p>
+<p>You can approve the same by clicking the link below:   <%= link_to 'Link approve', leaves_path(only_path: false,       host: [@user.organization.slug, '.',"niwantintranet.com"].join) %> to take action.
+    <br/>
+    <p>Thanks and Regards,<br/>
+    <br />
+    <%= @user.organization.name.capitalize %> Team</p>   
+=======
+      <br>
+from date:<br>       <%= @leave.starts_at.strftime("%A, %B %d, %Y") %><br/> to  <br/> <%= @leave.ends_at.strftime("%A, %B %d, %Y") %></p>
+<p>You can approve the same by clicking the link below:   <%= link_to 'Approve', leaves_path(only_path: false,       host: [@user.organization.slug, '.',"niwantintranet.com"].join) %> to take action.
+    <br>
+    <p>Thanks and Regards,<br>
+  <%= @user.organization.name.capitalize %> Team</p>   
+>>>>>>> 68b54c8624506eabd1e2f24cb031a8830b47c2bb
+  </body> 
+</html> 
+
+

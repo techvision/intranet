@@ -30,7 +30,6 @@ devise_for :users, :path_names => {
     match '/users/:user_id/profile' => 'users#profile', :via => [:get, :post], as: :profile
     match '/users/:user_id/reinvite' => 'users#reinvite', :via => :get, as: :reinvite
     match '/leavessummary' => 'users#leavessummary', :via => :get,  as: :leavessummary
-    match '/left' => 'users#left', :via => :get, as: :left
     match '/users/:user_id/chengeroles' => 'users#chengeroles', :via => [:get, :post], as: :chengeroles
     match '/users/:user_id/chengemanager' => 'users#chengemanager', :via => [:get, :post], as: :chengemanager
     match '/users/:user_id/hide' => 'users#hide', :via => [:get, :post], as: :hide

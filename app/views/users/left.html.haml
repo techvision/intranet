@@ -1,0 +1,27 @@
+%h1 Left users
+%table.table
+  %thead
+    %tr
+      %th Employee Name
+      %th Employee Role
+      %th Action
+  %tbody
+    - @users.each do |user|
+      %tr
+        %td= user.employee_name
+        %td= user.roles
+        %td= link_to 'Delete permanently this user', user, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-mini'
+%br
+%h2 Current employees status of your organization
+%table.table
+  %thead
+    %tr
+      %th Current working employees
+      %th Left employees
+      %th total employees joined with your organization
+  %tbody
+    %tr
+      %td= @activeUsers.size
+      %td= @users.size
+      %td= @activeUsers.size + @users.size
+%br

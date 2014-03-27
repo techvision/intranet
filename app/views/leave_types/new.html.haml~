@@ -1,0 +1,7 @@
+.form
+  %h3 New leave type
+  %i Your going to create Leave type for your organization. Once you create it, you will not able to make any changes in that. So we requesting you to please fill correct and appropriate information while creating.
+  %hr
+
+  = render 'form'
+
