@@ -11,7 +11,8 @@
         %th Employee ID
         %th Role
         %th Probation end date
-        %th Action
+        - if current_user.roles == 'Admin'
+          %th Action
     %tbody
       - @users.each do |user|
         %tr     
